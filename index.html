@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>H2Bros Viewer</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.3.1.js"></script>
+	<style type="text/css">
+		.iframe {
+		    width: 100vw;
+		    height: 50vh;
+		};
+
+		.titlebar {
+			display: none;
+		};
+	</style>
+</head>
+<body>
+	<iframe src="" class="iframe" id="api-frame" allow="autoplay; fullscreen; vr" allowvr allowfullscreen mozalllowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+	<script type="text/javascript">
+		var iframe = document.getElementById('api-frame');
+
+		var client = new Sketchfab(iframe);
+
+		var urlid = 'd5ca33dacf10459a92a8de25fb362a23';
+
+		client.init( urlid, {
+		    success: function onSuccess( api ){
+		        api.start();
+		        api.addEventListener( 'viewerready', function() {
+		            //API is ready to use
+		            console.log( 'Viewer is ready' );
+		        } );
+		    },
+		    error: function onError() {
+		        console.log( 'Viewer error' );
+		    }
+		} );
+	</script>
+</body>
+</html>
